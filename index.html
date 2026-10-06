@@ -1,0 +1,855 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+<meta
+    name="description"
+    content="WILDGUARD — AI-powered wildlife early-warning technology."
+>
+
+<title>WILDGUARD — Wildlife Early Warning</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- 3D MODEL VIEWER -->
+<script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+</script>
+
+
+</head>
+
+<body>
+
+<header id="header">
+    <nav class="nav">
+
+        <a class="brand" href="#top">
+            WILDGUARD
+        </a>
+
+        
+        <div class="nav-links">
+
+            <a href="#overview">Overview</a>
+            <span>|</span>
+
+            <a href="#monitor">Live Monitor</a>
+            <span>|</span>
+
+            <a href="#detections">Detections</a>
+            <span>|</span>
+
+            <a href="#map">Map</a>
+            <span>|</span>
+
+            <a href="#devices">Devices</a>
+            <span>|</span>
+
+            <a href="#technology">Analytics</a>
+            <span>|</span>
+
+            <a href="#about">About</a>
+
+        </div>
+
+    </nav>
+</header>
+
+<main id="top">
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="hero" id="overview">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            INTELLIGENT WILDLIFE MONITORING
+        </p>
+
+        <h1>
+            Protecting the boundary<br>
+            between people and wildlife.
+        </h1>
+
+        <p class="hero-copy">
+            AI-powered early detection for elephant intrusion,
+            with secondary wildlife monitoring for sloth bears.
+        </p>
+
+        <div class="actions">
+            <a class="btn" href="#monitor">
+                Explore WILDGUARD <b>↘</b>
+            </a>
+
+            <a class="link" href="#technology">
+                How it works →
+            </a>
+        </div>
+
+        <!-- =================================================
+             3D ELEPHANT
+             ================================================= -->
+
+        <div class="hero-art hero-3d">
+
+            <div class="ring r1"></div>
+            <div class="ring r2"></div>
+            <div class="scan"></div>
+
+            <model-viewer
+                class="elephant-model"
+                src="assets/models/elephant.glb"
+                alt="3D elephant representing the primary WILDGUARD detection target"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="1200"
+                rotation-per-second="8deg"
+                shadow-intensity="0.8"
+                exposure="1"
+                environment-image="neutral"
+                interaction-prompt="none"
+                disable-zoom
+                camera-orbit="0deg 75deg 105%"
+                camera-target="0m 0m 0m">
+            </model-viewer>
+
+            <span class="node n1">
+                ● WG-01
+            </span>
+
+            <span class="node n2">
+                ● WG-02
+            </span>
+
+            <label>
+                PRIMARY TARGET
+                <strong>ELEPHANT</strong>
+            </label>
+
+            <div class="hero-status">
+                <span class="status-dot"></span>
+                AI DETECTION ACTIVE
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     SYSTEM
+     ===================================================== -->
+
+<section class="light">
+
+    <div class="wrap two reveal">
+
+        <div>
+
+            <p class="eyebrow">
+                THE SYSTEM
+            </p>
+
+            <h2>
+                Detect.<br>
+                Locate.<br>
+                Alert.
+            </h2>
+
+        </div>
+
+        <div>
+
+            <p class="lead">
+                WILDGUARD connects computer vision,
+                edge computing, GPS and long-range
+                communication into one wildlife
+                early-warning workflow.
+            </p>
+
+            <p>
+                Designed for the forest–farm interface,
+                with elephant detection as the primary
+                objective and sloth bear detection as
+                a secondary capability.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     DETECT
+     ===================================================== -->
+
+<section class="feature" id="detections">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            01 — DETECT
+        </p>
+
+        <h2>
+            Intelligence at the edge.
+        </h2>
+
+        <p class="copy">
+            A camera feed is processed locally through
+            a Raspberry Pi and YOLO-based computer vision
+            to identify wildlife in monitored areas.
+        </p>
+
+        <div class="camera">
+
+            <div class="grid"></div>
+
+            <div class="box">
+                <b>ELEPHANT · 94%</b>
+            </div>
+
+            <div class="cammeta">
+
+                <span>
+                    ● LIVE ANALYSIS
+                </span>
+
+                <span>
+                    WG-02 / CAMERA
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     SECONDARY WILDLIFE
+     ===================================================== -->
+
+<section class="secondary">
+
+    <div class="wrap two reveal">
+
+        <div class="bear">
+
+            <span>
+                SECONDARY TARGET
+            </span>
+
+            <strong>
+                SLOTH BEAR
+            </strong>
+
+            <!-- 3D SLOTH BEAR -->
+            <model-viewer
+                class="bear-model"
+                src="assets/models/bear.glb"
+                alt="3D sloth bear representing the secondary WILDGUARD detection target"
+                camera-controls
+                auto-rotate
+                auto-rotate-delay="1000"
+                rotation-per-second="5deg"
+                shadow-intensity="0.8"
+                exposure="1"
+                environment-image="neutral"
+                interaction-prompt="none"
+                disable-zoom>
+            </model-viewer>
+
+        </div>
+
+        <div>
+
+            <p class="eyebrow">
+                ADDITIONAL WILDLIFE MONITORING
+            </p>
+
+            <h2>
+                One system.<br>
+                More awareness.
+            </h2>
+
+            <p>
+                WILDGUARD can support secondary wildlife
+                detection such as sloth bears within the
+                monitored environment.
+            </p>
+
+            <a class="link" href="#technology">
+                Explore the system →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     LOCATE
+     ===================================================== -->
+
+<section class="dark" id="map">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            02 — LOCATE
+        </p>
+
+        <h2>
+            Know where the<br>
+            detection happened.
+        </h2>
+
+        <p class="copy">
+            GPS-tagged monitoring events provide the
+            location of the field node where wildlife
+            was detected.
+        </p>
+
+        <div class="map">
+
+            <span class="forest">
+                FOREST
+            </span>
+
+            <span class="farm">
+                FARM / MONITORING AREA
+            </span>
+
+            <div class="road"></div>
+
+            <i class="m m1">
+                WG-01
+            </i>
+
+            <i class="m m2">
+                WG-02
+                <b>ELEPHANT DETECTED</b>
+            </i>
+
+            <i class="m m3">
+                WG-03
+            </i>
+
+            <small>
+                10.12345° N&nbsp;&nbsp;
+                79.12345° E
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     ALERT
+     ===================================================== -->
+
+<section class="alert">
+
+    <div class="wrap two reveal">
+
+        <div>
+
+            <p class="eyebrow">
+                03 — ALERT
+            </p>
+
+            <h2>
+                From detection<br>
+                to notification.
+            </h2>
+
+            <p class="copy">
+                LoRa-based communication carries
+                detection events from field monitoring
+                nodes toward the receiving station
+                and software platform.
+            </p>
+
+        </div>
+
+        <div class="alertcard">
+
+            <small>
+                ● WILDGUARD ALERT
+            </small>
+
+            <h3>
+                Elephant detected nearby.
+            </h3>
+
+            <div class="stats">
+
+                <span>
+                    NODE
+                    <strong>WG-02</strong>
+                </span>
+
+                <span>
+                    CONFIDENCE
+                    <strong>94%</strong>
+                </span>
+
+                <span>
+                    STATUS
+                    <strong>ACTIVE</strong>
+                </span>
+
+                <span>
+                    TIME
+                    <strong>10:42:18</strong>
+                </span>
+
+            </div>
+
+            <footer>
+                CAMERA&nbsp;&nbsp;→&nbsp;&nbsp;
+                AI&nbsp;&nbsp;→&nbsp;&nbsp;
+                GPS&nbsp;&nbsp;→&nbsp;&nbsp;
+                LoRa&nbsp;&nbsp;→&nbsp;&nbsp;
+                WEB
+            </footer>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     LIVE MONITOR
+     ===================================================== -->
+
+<section class="light monitor" id="monitor">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            LIVE MONITOR
+        </p>
+
+        <div class="monitorhead">
+
+            <h2>
+                See what<br>
+                WILDGUARD sees.
+            </h2>
+
+            <span>
+                ● SYSTEM ONLINE
+            </span>
+
+        </div>
+
+        <div class="monitorbox">
+
+            <div class="screen">
+
+                <label>
+                    LIVE CAMERA FEED
+                </label>
+
+                <div class="screen-elephant"></div>
+
+                <b>
+                    ELEPHANT&nbsp;&nbsp; 94%
+                </b>
+
+                <footer>
+                    WG-02
+                    <span>
+                        AI ANALYSIS ACTIVE
+                    </span>
+                    10:42:18
+                </footer>
+
+            </div>
+
+            <aside>
+
+                <div>
+                    PRIMARY TARGET
+                    <strong>Elephant</strong>
+                    <small>Active detection</small>
+                </div>
+
+                <div>
+                    SECONDARY TARGET
+                    <strong>Sloth Bear</strong>
+                    <small>Monitoring enabled</small>
+                </div>
+
+                <div>
+                    FIELD NODE
+                    <strong>WG-02</strong>
+                    <small>LoRa connected</small>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     DEVICES
+     ===================================================== -->
+
+<section id="devices">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            THE ECOSYSTEM
+        </p>
+
+        <h2>
+            Know your system.
+        </h2>
+
+        <p class="copy">
+            Each part of WILDGUARD has a role in turning
+            a camera observation into an actionable
+            monitoring event.
+        </p>
+
+        <div class="cards">
+
+            <article>
+
+                <small>01</small>
+
+                <h3>
+                    Camera
+                </h3>
+
+                <p>
+                    Captures the monitored environment
+                    for AI analysis.
+                </p>
+
+            </article>
+
+            <article>
+
+                <small>02</small>
+
+                <h3>
+                    Raspberry Pi
+                </h3>
+
+                <p>
+                    Provides local edge computing for
+                    the detection pipeline.
+                </p>
+
+            </article>
+
+            <article>
+
+                <small>03</small>
+
+                <h3>
+                    GPS
+                </h3>
+
+                <p>
+                    Associates a detection with the
+                    monitoring node location.
+                </p>
+
+            </article>
+
+            <article>
+
+                <small>04</small>
+
+                <h3>
+                    LoRa
+                </h3>
+
+                <p>
+                    Enables long-range communication
+                    between field and receiver.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     TECHNOLOGY / ANALYTICS
+     ===================================================== -->
+
+<section class="dark" id="technology">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            THE TECHNOLOGY
+        </p>
+
+        <h2>
+            Built as a<br>
+            connected system.
+        </h2>
+
+        <div class="flow">
+
+            <span>
+                CAMERA
+            </span>
+
+            <b>→</b>
+
+            <span>
+                YOLO / OPENCV
+            </span>
+
+            <b>→</b>
+
+            <span>
+                RASPBERRY PI
+            </span>
+
+            <b>→</b>
+
+            <span>
+                GPS + LoRa
+            </span>
+
+            <b>→</b>
+
+            <span>
+                WILDGUARD WEB
+            </span>
+
+        </div>
+
+        <div class="tech">
+
+            <p>
+                COMPUTER VISION
+                <strong>
+                    YOLO + OpenCV
+                </strong>
+            </p>
+
+            <p>
+                EDGE COMPUTING
+                <strong>
+                    Raspberry Pi 4
+                </strong>
+            </p>
+
+            <p>
+                LOCATION
+                <strong>
+                    GPS
+                </strong>
+            </p>
+
+            <p>
+                COMMUNICATION
+                <strong>
+                    RA-02 SX1278 LoRa
+                </strong>
+            </p>
+
+            <p>
+                WEB PLATFORM
+                <strong>
+                    HTML + CSS + JavaScript
+                </strong>
+            </p>
+
+            <p>
+                BACKEND
+                <strong>
+                    Python + FastAPI
+                </strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+
+<section class="about" id="about">
+
+    <div class="wrap reveal">
+
+        <p class="eyebrow">
+            WILDGUARD
+        </p>
+
+        <h2>
+            Technology designed<br>
+            for the field.
+        </h2>
+
+        <p>
+            WILDGUARD is focused on early detection
+            and location-aware alerts at the
+            forest–farm boundary. Its architecture
+            combines AI, edge computing and
+            long-range communication into a practical
+            prototype.
+        </p>
+
+        <a class="btn" href="#top">
+            Back to top ↑
+        </a>
+
+    </div>
+
+</section>
+```
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="footer">
+
+```
+<div class="wrap footgrid">
+
+    <div>
+
+        <a class="brand" href="#top">
+            WILDGUARD
+        </a>
+
+        <p>
+            Intelligent wildlife<br>
+            early-warning technology.
+        </p>
+
+    </div>
+
+    <div>
+
+        <b>
+            PLATFORM
+        </b>
+
+        <a href="#monitor">
+            Live Monitor
+        </a>
+
+        <a href="#detections">
+            Detections
+        </a>
+
+        <a href="#map">
+            Map
+        </a>
+
+        <a href="#devices">
+            Devices
+        </a>
+
+    </div>
+
+    <div>
+
+        <b>
+            TECHNOLOGY
+        </b>
+
+        <a href="#technology">
+            Computer Vision
+        </a>
+
+        <a href="#technology">
+            Edge Computing
+        </a>
+
+        <a href="#technology">
+            GPS
+        </a>
+
+        <a href="#technology">
+            LoRa
+        </a>
+
+    </div>
+
+    <div>
+
+        <b>
+            PROJECT
+        </b>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#technology">
+            Architecture
+        </a>
+
+    </div>
+
+</div>
+
+<div class="bottom wrap">
+
+    © 2026 WILDGUARD
+
+    <span>
+        AI-powered wildlife monitoring system
+    </span>
+
+</div>
+```
+
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>

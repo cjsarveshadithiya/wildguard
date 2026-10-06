@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video History — WILDGUARD</title>
+
+    <meta
+        name="description"
+        content="WILDGUARD historical wildlife detection recordings"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="header" class="site-header">
+
+    <div class="nav-wrap">
+
+        <a href="index.html" class="brand">
+            WILDGUARD
+        </a>
+
+        <button
+            id="menuBtn"
+            class="menu-btn"
+            type="button"
+            aria-label="Open navigation"
+        >
+            Menu
+        </button>
+
+        <nav id="menu" class="nav-menu">
+
+            <a href="index.html">Overview</a>
+
+            <a href="monitor.html">Live Monitor</a>
+
+            <a href="detections.html">Detections</a>
+
+            <a href="map.html">Map</a>
+
+            <a href="devices.html">Devices</a>
+
+            <a href="analytics.html">Analytics</a>
+
+            <a href="video-history.html" class="active">
+                Video History
+            </a>
+
+            <a href="about.html">About</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-inner reveal">
+
+            <p class="eyebrow">
+                WILDLIFE RECORDINGS
+            </p>
+
+            <h1>
+                Video History
+            </h1>
+
+            <p class="hero-copy">
+                Review historical wildlife detection recordings,
+                camera information, detection time and GPS location
+                from WILDGUARD monitoring nodes.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-inner">
+
+            <div class="section-heading reveal">
+
+                <p class="eyebrow">
+                    RECORDINGS
+                </p>
+
+                <h2>
+                    Historical detections
+                </h2>
+
+                <p>
+                    Detection records retrieved from the WILDGUARD
+                    monitoring backend.
+                </p>
+
+            </div>
+
+
+            <div
+                id="videoHistory"
+                class="reveal"
+                aria-live="polite"
+            >
+
+                <div class="history-loading">
+                    Loading video history...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <span>
+            WILDGUARD
+        </span>
+
+        <span>
+            AI-powered wildlife early warning
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+<script src="js/video-history.js"></script>
+
+</body>
+</html>

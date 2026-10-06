@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="WILDGUARD live wildlife monitoring and AI detection system."
+  >
+
+  <title>Live Monitor — WILDGUARD</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Existing WILDGUARD global styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* =========================================================
+       WILDGUARD — LIVE MONITOR
+       Prototype interface
+       ========================================================= */
+
+    .monitor-page {
+      min-height: 100vh;
+      background: #f6f6f4;
+      padding-top: 64px;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .monitor-hero {
+      padding: 80px 0 45px;
+    }
+
+    .monitor-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+    }
+
+    .monitor-title {
+      margin: 0;
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+    }
+
+    .live-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 8px;
+
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4b9b67;
+      box-shadow: 0 0 0 5px rgba(75, 155, 103, 0.12);
+    }
+
+    /* ---------- MAIN LAYOUT ---------- */
+
+    .monitor-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 18px;
+
+      padding-bottom: 100px;
+    }
+
+    /* ---------- CAMERA ---------- */
+
+    .camera-panel {
+      position: relative;
+
+      min-height: 650px;
+
+      overflow: hidden;
+
+      background: #151614;
+      border-radius: 28px;
+    }
+
+    .camera-header {
+      position: absolute;
+      z-index: 5;
+
+      top: 22px;
+      left: 24px;
+      right: 24px;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: #aaa;
+
+      font-size: 9px;
+      letter-spacing: 0.14em;
+    }
+
+    .camera-feed {
+      position: absolute;
+      inset: 0;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 48%,
+          #77776f 0,
+          #42433e 24%,
+          #242522 56%,
+          #151614 100%
+        );
+    }
+
+    /* Technical grid */
+
+    .camera-grid {
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.035) 1px,
+          transparent 1px
+        );
+
+      background-size: 55px 55px;
+    }
+
+    /* ---------- ELEPHANT VISUAL ---------- */
+
+    .camera-elephant {
+      position: absolute;
+
+      width: 330px;
+      height: 175px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -45%);
+
+      background: #10110f;
+
+      border-radius: 48% 52% 43% 42%;
+
+      filter: drop-shadow(
+        0 25px 30px rgba(0, 0, 0, 0.35)
+      );
+    }
+
+    .camera-elephant::before {
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 110px;
+
+      left: -45px;
+      top: 5px;
+
+      background: #10110f;
+
+      border-radius: 48% 45% 45% 52%;
+    }
+
+    .camera-elephant::after {
+      content: "";
+
+      position: absolute;
+
+      width: 80px;
+      height: 22px;
+
+      left: -85px;
+      top: 95px;
+
+      background: #10110f;
+
+      border-radius: 0 0 30px 30px;
+
+      transform: rotate(20deg);
+    }
+
+    /* ---------- AI DETECTION BOX ---------- */
+
+    .ai-box {
+      position: absolute;
+
+      width: 330px;
+      height: 260px;
+
+      left: calc(50% - 200px);
+      top: calc(50% - 145px);
+
+      border: 1px solid #d7d2a5;
+    }
+
+    .ai-label {
+      position: absolute;
+
+      top: -27px;
+      left: -1px;
+
+      padding: 6px 10px;
+
+      background: #d7d2a5;
+      color: #141513;
+
+      font-size: 9px;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+    }
+
+    /* ---------- SCAN LINE ---------- */
+
+    .camera-scan {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      height: 1px;
+      top: 50%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(215, 210, 165, 0.7),
+          transparent
+        );
+
+      animation: monitorScan 4s ease-in-out infinite;
+    }
+
+    @keyframes monitorScan {
+
+      0%,
+      100% {
+        transform: translateY(-250px);
+        opacity: 0;
+      }
+
+      25%,
+      75% {
+        opacity: 1;
+      }
+
+      90% {
+        transform: translateY(250px);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- CAMERA FOOTER ---------- */
+
+    .camera-footer {
+      position: absolute;
+      z-index: 5;
+
+      left: 24px;
+      right: 24px;
+      bottom: 20px;
+
+      display: flex;
+      justify-content: space-between;
+
+      color: #999;
+
+      font-size: 8px;
+      letter-spacing: 0.13em;
+    }
+
+    /* ---------- SIDE PANEL ---------- */
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 27px;
+
+      background: #fff;
+
+      border: 1px solid #e3e3df;
+      border-radius: 25px;
+    }
+
+    .info-label {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: #999;
+
+      font-size: 8px;
+      letter-spacing: 0.15em;
+    }
+
+    .info-value {
+      font-size: 25px;
+      font-weight: 600;
+
+      letter-spacing: -0.035em;
+    }
+
+    .info-sub {
+      margin-top: 5px;
+
+      color: #777;
+
+      font-size: 10px;
+    }
+
+    /* ---------- CONFIDENCE ---------- */
+
+    .confidence {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .confidence-value {
+      font-size: 40px;
+      font-weight: 700;
+
+      letter-spacing: -0.06em;
+    }
+
+    .confidence-bar {
+      height: 5px;
+
+      margin-top: 18px;
+
+      overflow: hidden;
+
+      background: #e7e7e2;
+
+      border-radius: 10px;
+    }
+
+    .confidence-fill {
+      width: 94%;
+      height: 100%;
+
+      background: #171817;
+
+      border-radius: inherit;
+    }
+
+    /* ---------- STATUS ---------- */
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 12px 0;
+
+      border-bottom: 1px solid #e9e9e5;
+
+      font-size: 11px;
+    }
+
+    .status-row:last-child {
+      padding-bottom: 0;
+
+      border-bottom: 0;
+    }
+
+    .status-ok {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      font-weight: 600;
+    }
+
+    .status-ok::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #4b9b67;
+    }
+
+    /* ---------- ALERT ---------- */
+
+    .alert-card {
+      padding: 27px;
+
+      color: #fff;
+
+      background: #111;
+
+      border-radius: 25px;
+    }
+
+    .alert-card .info-label {
+      color: #777;
+    }
+
+    .alert-heading {
+      margin-bottom: 20px;
+
+      font-size: 21px;
+
+      letter-spacing: -0.03em;
+    }
+
+    .alert-meta {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 17px;
+    }
+
+    .alert-meta span {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: #777;
+
+      font-size: 7px;
+      letter-spacing: 0.13em;
+    }
+
+    .alert-meta strong {
+      font-size: 11px;
+    }
+
+    /* ---------- GPS ---------- */
+
+    .coordinates {
+      font-family: monospace;
+
+      font-size: 12px;
+
+      letter-spacing: 0.03em;
+    }
+
+    /* ---------- TABLET ---------- */
+
+    @media (max-width: 900px) {
+
+      .monitor-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .camera-panel {
+        min-height: 580px;
+      }
+
+      .side-panel {
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .alert-card {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media (max-width: 650px) {
+
+      .monitor-hero {
+        padding-top: 55px;
+      }
+
+      .monitor-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .monitor-layout {
+        padding-bottom: 60px;
+      }
+
+      .camera-panel {
+        min-height: 470px;
+
+        border-radius: 22px;
+      }
+
+      .camera-elephant {
+        transform:
+          translate(-50%, -45%)
+          scale(0.7);
+      }
+
+      .ai-box {
+        transform: scale(0.72);
+
+        transform-origin: center;
+      }
+
+      .side-panel {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       HEADER
+       ======================================================= -->
+
+  <header class="site-header" id="site-header">
+
+    <div class="nav-wrap">
+
+        <a href="index.html" class="brand">
+            WILDGUARD
+        </a>
+
+        <nav class="nav-menu" id="main-menu">
+
+            <a href="index.html">
+                Overview
+            </a>
+
+            <a href="monitor.html">
+                Live Monitor
+            </a>
+
+            <a href="detections.html">
+                Detections
+            </a>
+
+            <a href="map.html">
+                Map
+            </a>
+
+            <a href="devices.html">
+                Devices
+            </a>
+
+            <a href="index.html#technology">
+                Technology
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="index.html#alerts">
+                Alerts
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+  <!-- =======================================================
+       MAIN
+       ======================================================= -->
+
+  <main class="monitor-page">
+
+    <!-- PAGE INTRO -->
+
+    <section class="monitor-hero">
+
+      <div class="container">
+
+        <div class="monitor-top">
+
+          <div>
+
+            <p class="eyebrow">
+              WILDGUARD / FIELD MONITORING
+            </p>
+
+            <h1 class="monitor-title">
+              Live Monitor.
+            </h1>
+
+          </div>
+
+          <div class="live-status">
+
+            <span class="live-dot"></span>
+
+            SYSTEM ONLINE
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MONITOR -->
+
+    <section>
+
+      <div class="container">
+
+        <div class="monitor-layout">
+
+
+          <!-- =================================================
+               CAMERA FEED
+               ================================================= -->
+
+          <div class="camera-panel">
+
+            <div class="camera-header">
+
+              <span>
+                WG-02 / CAMERA 01
+              </span>
+
+              <span>
+                LIVE ANALYSIS
+              </span>
+
+            </div>
+
+
+            <div class="camera-feed">
+
+              <div class="camera-grid"></div>
+
+
+              <!-- Prototype elephant visualization -->
+
+              <div class="camera-elephant"></div>
+
+
+              <!-- AI detection bounding box -->
+
+              <div class="ai-box">
+
+                <span class="ai-label">
+                  ELEPHANT · 94%
+                </span>
+
+              </div>
+
+
+              <!-- AI scanning animation -->
+
+              <div class="camera-scan"></div>
+
+            </div>
+
+
+            <div class="camera-footer">
+
+              <span>
+                AI DETECTION ACTIVE
+              </span>
+
+              <span>
+                10:42:18
+              </span>
+
+              <span>
+                FRAME 30 FPS
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               INFORMATION PANEL
+               ================================================= -->
+
+          <aside class="side-panel">
+
+
+            <!-- PRIMARY DETECTION -->
+
+            <div class="info-card">
+
+              <span class="info-label">
+                PRIMARY DETECTION
+              </span>
+
+              <div class="info-value">
+                Elephant
+              </div>
+
+              <div class="info-sub">
+                Primary alert species
+              </div>
+
+            </div>
+
+
+            <!-- CONFIDENCE -->
+
+            <div class="info-card">
+
+              <span class="info-label">
+                AI CONFIDENCE
+              </span>
+
+              <div class="confidence">
+
+                <span>
+                  Detection
+                </span>
+
+                <strong class="confidence-value">
+                  94%
+                </strong>
+
+              </div>
+
+              <div class="confidence-bar">
+
+                <div class="confidence-fill"></div>
+
+              </div>
+
+            </div>
+
+
+            <!-- FIELD NODE -->
+
+            <div class="info-card">
+
+              <span class="info-label">
+                FIELD NODE
+              </span>
+
+              <div class="info-value">
+                WG-02
+              </div>
+
+
+              <div class="status-row">
+
+                <span>
+                  Camera
+                </span>
+
+                <strong class="status-ok">
+                  Connected
+                </strong>
+
+              </div>
+
+
+              <div class="status-row">
+
+                <span>
+                  GPS
+                </span>
+
+                <strong class="status-ok">
+                  Connected
+                </strong>
+
+              </div>
+
+
+              <div class="status-row">
+
+                <span>
+                  LoRa
+                </span>
+
+                <strong class="status-ok">
+                  Connected
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="info-card">
+
+              <span class="info-label">
+                DETECTION LOCATION
+              </span>
+
+              <div class="coordinates">
+
+                10.12345° N<br>
+                79.12345° E
+
+              </div>
+
+              <div class="info-sub">
+                Monitoring node location
+              </div>
+
+            </div>
+
+
+            <!-- ACTIVE ALERT -->
+
+            <div class="alert-card">
+
+              <span class="info-label">
+                ACTIVE ALERT
+              </span>
+
+              <div class="alert-heading">
+                Elephant detected nearby.
+              </div>
+
+
+              <div class="alert-meta">
+
+                <div>
+
+                  <span>
+                    TIME
+                  </span>
+
+                  <strong>
+                    10:42:18
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    NODE
+                  </span>
+
+                  <strong>
+                    WG-02
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    CONFIDENCE
+                  </span>
+
+                  <strong>
+                    94%
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    CHANNEL
+                  </span>
+
+                  <strong>
+                    LoRa
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Existing WILDGUARD JavaScript -->
+
+<script src="js/app.js"></script>
+<script src="js/monitor.js"></script>
+
+</body>
+</html>
+

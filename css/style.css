@@ -1,0 +1,587 @@
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#171717;background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{width:min(1240px,calc(100% - 48px));margin:auto}.hero{padding:150px 0 70px;text-align:center;overflow:hidden}.eyebrow{font-size:10px;font-weight:700;letter-spacing:.18em;color:#77756f;margin:0 0 22px}.hero h1,h2{font-weight:700;letter-spacing:-.06em;line-height:.98;margin:0}.hero h1{font-size:clamp(48px,7vw,92px)}.hero-copy{max-width:620px;margin:28px auto;color:#666;font-size:18px}.actions{display:flex;justify-content:center;gap:28px;align-items:center;margin:30px 0}.btn{display:inline-flex;gap:15px;background:#111;color:#fff;border-radius:999px;padding:13px 20px;font-size:13px;font-weight:600}.link{font-size:13px;font-weight:600}.hero-art{height:530px;max-width:1080px;margin:65px auto 0;border-radius:34px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 42%,#aaa89e,#4b4c47 48%,#1c1d1b);box-shadow:0 28px 70px #0002}.ring{position:absolute;border:1px solid #fff2;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}.r1{width:420px;height:420px}.r2{width:700px;height:700px}.scan{position:absolute;left:0;right:0;top:48%;height:1px;background:linear-gradient(90deg,transparent,#fff8,transparent);animation:scan 4s infinite}.elephant{position:absolute;width:430px;height:260px;left:50%;top:50%;transform:translate(-50%,-34%);filter:drop-shadow(0 22px 20px #0007)}.elephant div,.elephant i{position:absolute;background:#151614}.body{left:80px;top:65px;width:275px;height:145px;border-radius:48% 55% 42% 38%}.head{left:37px;top:67px;width:115px;height:116px;border-radius:48% 45% 44% 50%}.ear{left:72px;top:51px;width:98px;height:130px;border-radius:50%;transform:rotate(-12deg);background:#20211e!important}.trunk{left:22px;top:127px;width:92px;height:26px;border-radius:0 0 35px 35px;transform:rotate(23deg);transform-origin:right center}.elephant i{top:173px;width:32px;height:83px;border-radius:0 0 18px 18px}.l1{left:118px}.l2{left:183px}.l3{left:286px}.l4{left:335px}.node{position:absolute;color:#eee;font-size:9px;letter-spacing:.13em}.n1{left:13%;top:31%}.n2{right:13%;bottom:29%}.hero-art label{position:absolute;bottom:28px;left:30px;color:#aaa;font-size:9px;letter-spacing:.16em}.hero-art label strong{color:#fff;margin-left:8px}.light{background:#f6f6f4}.light,.feature,.secondary,.alert,#devices,.about{padding:120px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}.two h2,.feature h2,.dark h2,#devices h2,.about h2{font-size:clamp(48px,6vw,78px)}.lead{font-size:25px;line-height:1.25}.two p:not(.eyebrow),.copy,.about p:not(.eyebrow){color:#686864;max-width:600px;font-size:16px}.feature{padding-bottom:80px}.camera{height:520px;background:#111;border-radius:30px;padding:50px;position:relative;overflow:hidden;margin-top:45px}.grid,.map{background-image:linear-gradient(#fff00008 1px,transparent 1px),linear-gradient(90deg,#fff00008 1px,transparent 1px);background-size:50px 50px}.camera .grid{position:absolute;inset:0}.box{position:absolute;left:35%;top:28%;width:32%;height:47%;border:1px solid #e7e5d9}.box b{position:absolute;top:-25px;background:#e7e5d9;color:#111;padding:5px 8px;font-size:9px}.cammeta{position:absolute;left:20px;right:20px;bottom:20px;display:flex;justify-content:space-between;color:#999;font-size:9px;letter-spacing:.1em}.secondary{background:#eae9e3}.bear{height:530px;border-radius:30px;background:radial-gradient(circle,#a8a59a,#292a27);position:relative;display:flex;align-items:center;justify-content:center}.bear em{font-style:normal;font-size:145px;filter:grayscale(1)}.bear span,.bear strong{position:absolute;left:30px;color:#fff;font-size:9px;letter-spacing:.15em}.bear span{top:28px}.bear strong{bottom:28px}.dark{background:#111;color:#f7f7f2;padding:120px 0}.map{height:570px;border:1px solid #333;border-radius:30px;position:relative;overflow:hidden;margin-top:50px}.forest,.farm,.map small{position:absolute;color:#777;font-size:9px;letter-spacing:.15em}.forest{left:7%;top:9%}.farm{right:7%;bottom:9%}.map small{left:30px;bottom:25px}.road{position:absolute;left:7%;right:7%;top:53%;height:1px;background:#666}.m{position:absolute;font-style:normal;font-size:9px;color:#aaa}.m:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#777;margin-right:7px}.m1{left:20%;top:35%}.m2{left:53%;top:46%;color:#fff}.m2:before{background:#d9d4a8;box-shadow:0 0 0 8px #d9d4a81a}.m2 b{display:block;color:#d9d4a8;margin:12px 0 0 15px;font-size:8px;letter-spacing:.12em}.m3{right:22%;top:67%}.alert{background:#f4f3ef}.alertcard{background:#111;color:#fff;border-radius:30px;padding:36px}.alertcard>small{color:#aaa;letter-spacing:.15em}.alertcard h3{font-size:34px;line-height:1.05;letter-spacing:-.04em;margin:55px 0}.stats{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:45px}.stats span{font-size:8px;letter-spacing:.15em;color:#888}.stats strong{display:block;color:#fff;font-size:13px;margin-top:5px}.alertcard footer{border-top:1px solid #333;padding-top:20px;color:#999;font-size:8px;letter-spacing:.1em}.monitorhead{display:flex;justify-content:space-between;align-items:end;margin:0 0 45px}.monitorhead span{font-size:9px;letter-spacing:.12em;color:#39865a}.monitorbox{display:grid;grid-template-columns:1fr 280px;background:#fff;border:1px solid #ddd;border-radius:30px;overflow:hidden}.screen{min-height:530px;background:#252622;position:relative;color:#999}.screen>label{position:absolute;top:20px;left:22px;font-size:8px;letter-spacing:.15em}.screen-elephant{position:absolute;width:260px;height:150px;background:#111;border-radius:45%;left:50%;top:50%;transform:translate(-50%,-50%)}.screen>b{position:absolute;left:42%;top:34%;border:1px solid #d5d1a4;color:#fff;padding:7px;font-size:8px}.screen footer{position:absolute;left:20px;right:20px;bottom:20px;display:flex;justify-content:space-between;font-size:8px}.monitorbox aside{padding:30px}.monitorbox aside div{padding:25px 0;border-bottom:1px solid #e4e4df;font-size:8px;color:#888;letter-spacing:.12em}.monitorbox aside strong{display:block;color:#111;font-size:21px;letter-spacing:-.03em;margin-top:6px}.monitorbox aside small{display:block;letter-spacing:0;color:#888;margin-top:4px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}.cards article{min-height:260px;background:#f4f4f1;border-radius:25px;padding:27px}.cards small{color:#888;letter-spacing:.15em}.cards h3{font-size:27px;margin:85px 0 10px;letter-spacing:-.04em}.cards p{font-size:12px;color:#6d6d68}.flow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:70px 0 80px;color:#ddd;font-size:10px;letter-spacing:.12em}.flow b{color:#666}.tech{border-top:1px solid #383834}.tech p{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #383834;margin:0;padding:22px 0;font-size:9px;color:#777;letter-spacing:.14em}.tech strong{color:#fff;font-size:16px;font-weight:500;letter-spacing:0}.about{background:#e9e8e2}.about p:not(.eyebrow){font-size:18px;line-height:1.55;max-width:800px;margin:30px 0}.footer{background:#f4f3ef;padding:70px 0 25px}.footgrid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:40px;padding-bottom:60px}.footgrid>div:not(:first-child){display:flex;flex-direction:column;gap:11px;font-size:11px;color:#666}.footgrid b{font-size:9px;letter-spacing:.15em;color:#999;margin-bottom:7px}.footgrid p{font-size:13px;color:#777}.bottom{border-top:1px solid #ddd;padding-top:20px;font-size:9px;color:#888;display:flex;justify-content:space-between}.reveal{opacity:0;transform:translateY(25px);transition:.8s}.reveal.show{opacity:1;transform:none}@keyframes scan{0%,100%{transform:translateY(-180px);opacity:0}25%,75%{opacity:1}90%{transform:translateY(180px);opacity:0}}#menuBtn{display:none}@media(max-width:850px){.two{gap:50px}.cards{grid-template-columns:1fr 1fr}.monitorbox{grid-template-columns:1fr}.monitorbox aside{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.monitorbox aside div{border:0}.nav{gap:20px}}@media(max-width:680px){.wrap{width:calc(100% - 32px)}.hero,.light,.feature,.secondary,.alert,#devices,.about,.dark{padding:85px 0}.nav{height:58px;padding:0 16px}.nav .brand{margin-right:auto}.alerts{display:none}#menuBtn{display:block;background:none;border:0}#menuBtn span{display:block;width:22px;height:2px;background:#111;margin:5px}#menu{display:none;position:absolute;top:58px;left:0;right:0;background:#fff;padding:12px 16px 20px;border-bottom:1px solid #ddd}#menu.open{display:flex;flex-direction:column}#menu a{padding:12px 0;font-size:13px}.hero{padding-top:115px}.hero h1{font-size:48px}.hero-copy{font-size:15px}.hero-art{height:390px;margin-top:50px;border-radius:24px}.elephant{transform:translate(-50%,-34%) scale(.62)}.two{grid-template-columns:1fr}.two h2,.feature h2,.dark h2,#devices h2,.about h2{font-size:48px}.camera{height:390px;padding:20px}.bear{height:390px}.bear em{font-size:100px}.map{height:420px}.cards{grid-template-columns:1fr}.cards article{min-height:210px}.cards h3{margin-top:55px}.monitorhead{flex-direction:column;align-items:start;gap:20px}.monitorbox aside{display:block}.monitorbox aside div{border-bottom:1px solid #e4e4df}.screen{min-height:400px}.flow b{display:none}.tech p{grid-template-columns:1fr;gap:8px}.footgrid{grid-template-columns:1fr 1fr}.footgrid>div:first-child{grid-column:1/-1}.bottom{flex-direction:column;gap:8px}}
+
+/* =====================================================
+   WILDGUARD — 3D SLOTH BEAR
+   ===================================================== */
+
+.bear-model {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    --poster-color: transparent;
+    z-index: 1;
+}
+
+/* Keep the bear labels visible above the 3D model */
+.bear span,
+.bear strong {
+    z-index: 2;
+}
+
+/* Mobile sizing */
+@media (max-width: 680px) {
+    .bear-model {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* =====================================================
+   CENTER 3D ELEPHANT
+   ===================================================== */
+
+.elephant-model {
+    position: absolute;
+    width: 560px;
+    height: 420px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    --poster-color: transparent;
+    z-index: 2;
+}
+
+@media (max-width: 680px) {
+    .elephant-model {
+        width: 360px;
+        height: 300px;
+    }
+}
+
+/* ================================
+   WILDGUARD AUTHENTICATION
+================================ */
+
+.login-section {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: min(420px, 100%);
+    margin: 55px auto 0;
+    text-align: left;
+}
+
+.form-field {
+    margin-bottom: 22px;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: #77756f;
+    text-transform: uppercase;
+}
+
+.form-field input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid #d8d7d1;
+    border-radius: 14px;
+    background: #f8f8f6;
+    color: #171717;
+    font: inherit;
+    font-size: 15px;
+    outline: none;
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.form-field input:focus {
+    border-color: #171717;
+    background: #fff;
+    box-shadow: 0 0 0 3px #17171710;
+}
+
+.login-button {
+    width: 100%;
+    height: 52px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform .2s ease,
+        opacity .2s ease;
+}
+
+.login-button:hover {
+    opacity: .88;
+}
+
+.login-button:active {
+    transform: scale(.98);
+}
+
+.login-message {
+    min-height: 22px;
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+
+.login-message.loading {
+    color: #777;
+}
+
+.login-message.success {
+    color: #39865a;
+}
+
+.login-message.error {
+    color: #b33a3a;
+}
+
+
+/* ================================
+   VIDEO HISTORY
+================================ */
+
+.video-history-card {
+    margin-top: 25px;
+    padding: 30px;
+    border: 1px solid #deddd7;
+    border-radius: 26px;
+    background: #f7f7f4;
+}
+
+.video-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #deddd7;
+}
+
+.video-history-header .eyebrow {
+    margin-bottom: 8px;
+}
+
+.video-history-header h3 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: -.04em;
+}
+
+.video-status {
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #e4eee7;
+    color: #39865a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.video-history-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 28px 0;
+}
+
+.video-history-grid > div {
+    min-width: 0;
+}
+
+.video-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #888;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.video-history-grid strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #171717;
+}
+
+.video-recording {
+    padding-top: 22px;
+    border-top: 1px solid #deddd7;
+}
+
+.video-recording code {
+    display: block;
+    padding: 12px;
+    overflow-wrap: anywhere;
+    border-radius: 10px;
+    background: #ecebe7;
+    color: #555;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+}
+
+.history-message {
+    padding: 55px 30px;
+    border: 1px solid #deddd7;
+    border-radius: 26px;
+    background: #f7f7f4;
+    text-align: center;
+}
+
+.history-message h3 {
+    margin: 0 0 10px;
+    font-size: 25px;
+    letter-spacing: -.03em;
+}
+
+.history-message p {
+    margin: 0;
+    color: #777;
+}
+
+
+/* Mobile */
+
+@media (max-width: 680px) {
+
+    .login-section {
+        min-height: 650px;
+    }
+
+    .login-form {
+        margin-top: 40px;
+    }
+
+    .video-history-card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .video-history-header {
+        flex-direction: column;
+    }
+
+    .video-history-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 15px;
+    }
+
+}
+
+/* ================================
+   MONITOR NAVIGATION
+================================ */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.nav-menu a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.nav-menu a:not(:last-child)::after {
+    content: "|";
+    margin-left: 16px;
+    color: #b8b7b1;
+    font-weight: 400;
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+    margin-right: 22px;
+}
+/* =====================================================
+   WILDGUARD — DARK HERO BACKGROUND
+   ===================================================== */
+
+body {
+    background:
+    linear-gradient(
+        rgba(0, 0, 0, 0.30),
+        rgba(0, 0, 0, 0.30)
+    ),
+    url("../assets/images/hero.60Y34Sn3.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+/* =====================================================
+   WILDGUARD — DARK SECTION SURFACES
+   Existing layout and spacing preserved
+   ===================================================== */
+
+.light,
+.secondary,
+.alert,
+#devices,
+.about,
+.footer {
+    background: rgba(12, 14, 12, 0.88);
+}
+
+.feature {
+    background: rgba(10, 12, 10, 0.92);
+}
+
+.dark {
+    background: rgba(8, 10, 8, 0.94);
+}
+
+
+/* =====================================================
+   WILDGUARD — WHITE BOLD TYPOGRAPHY
+   ===================================================== */
+
+body,
+body p,
+body span,
+body small,
+body label,
+body strong,
+body b,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body a,
+body li,
+body em {
+    color: #fff;
+}
+
+
+/* Main typography weight */
+body p,
+body span,
+body small,
+body label,
+body a,
+body li,
+body em {
+    font-weight: 600;
+}
+
+body strong,
+body b,
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.nav-menu a,
+.brand {
+    color: #fff;
+    font-weight: 700;
+}
+
+.nav-menu a:not(:last-child)::after {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.eyebrow,
+.hero-copy {
+    color: #fff;
+    font-weight: 600;
+}
+
+.hero h1 {
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   BUTTONS / LINKS
+   ===================================================== */
+
+.btn,
+.login-button {
+    color: #fff;
+    font-weight: 700;
+}
+
+.link {
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CARDS / SUPPORTING TEXT
+   ===================================================== */
+
+.cards article {
+    background: rgba(18, 20, 18, 0.92);
+}
+
+.cards small,
+.cards p,
+.two p:not(.eyebrow),
+.copy,
+.about p:not(.eyebrow) {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   MAP / TECHNICAL CONTENT
+   ===================================================== */
+
+.map {
+    background-color: rgba(8, 10, 8, 0.82);
+}
+
+.forest,
+.farm,
+.map small,
+.m,
+.m2,
+.m2 b {
+    color: #fff;
+    font-weight: 600;
+}
+
+.tech p,
+.tech strong,
+.flow,
+.flow b {
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   MONITOR
+   ===================================================== */
+
+.monitorhead span,
+.cammeta,
+.screen,
+.monitorbox aside,
+.monitorbox aside div,
+.monitorbox aside strong,
+.monitorbox aside small {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.footer,
+.footer p,
+.footer a,
+.footer b,
+.bottom {
+    color: #fff;
+}
+
+.footgrid b {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =====================================================
+   FORM / AUTHENTICATION
+   ===================================================== */
+
+.form-field label,
+.login-message {
+    color: #fff;
+    font-weight: 700;
+}
+
+.form-field input {
+    background: rgba(20, 22, 20, 0.92);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.form-field input::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.form-field input:focus {
+    background: rgba(25, 27, 25, 0.96);
+    color: #fff;
+}
+
+
+/* =====================================================
+   VIDEO HISTORY
+   ===================================================== */
+
+.video-history-card,
+.history-message {
+    background: rgba(18, 20, 18, 0.92);
+    color: #fff;
+}
+
+.video-history-header,
+.video-recording {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.video-history-header h3,
+.video-history-grid strong,
+.history-message h3,
+.history-message p,
+.video-label {
+    color: #fff;
+    font-weight: 700;
+}
+
+.video-recording code {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}

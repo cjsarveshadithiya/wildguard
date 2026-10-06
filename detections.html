@@ -1,0 +1,1382 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="WILDGUARD wildlife detection history and AI monitoring."
+    >
+
+    <title>Detections — WILDGUARD</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================================
+           DETECTIONS PAGE
+           ========================================================= */
+
+        .detections-page {
+            background: #f5f5f7;
+            min-height: 100vh;
+            color: #1d1d1f;
+        }
+
+        /* =========================================================
+           HEADER / NAVIGATION
+           ========================================================= */
+
+        .detections-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            min-height: 64px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .detections-brand {
+            flex-shrink: 0;
+
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+
+            color: #111;
+            text-decoration: none;
+        }
+
+        .detections-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: 28px;
+
+            margin-left: 30px;
+        }
+
+        .detections-nav a {
+            flex-shrink: 0;
+
+            color: #555;
+            text-decoration: none;
+
+            font-size: 14px;
+            white-space: nowrap;
+
+            transition: color 0.2s ease;
+        }
+
+        .detections-nav a:hover {
+            color: #000;
+        }
+
+        .detections-nav a.active {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .detections-hero {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            padding: 110px 5% 70px;
+        }
+
+        .eyebrow {
+            margin-bottom: 18px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+
+            color: #6e6e73;
+        }
+
+        .detections-hero h1 {
+            max-width: 850px;
+
+            margin: 0;
+
+            font-size: clamp(48px, 7vw, 88px);
+            line-height: 0.98;
+
+            letter-spacing: -0.055em;
+            font-weight: 700;
+
+            color: #111;
+        }
+
+        .detections-hero p {
+            max-width: 650px;
+
+            margin-top: 28px;
+
+            font-size: 20px;
+            line-height: 1.5;
+
+            color: #6e6e73;
+        }
+
+        /* =========================================================
+           STATISTICS
+           ========================================================= */
+
+        .detection-stats {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            padding: 0 5% 60px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: #fff;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+
+            padding: 30px;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .stat-label {
+            margin-bottom: 18px;
+
+            font-size: 14px;
+
+            color: #6e6e73;
+        }
+
+        .stat-value {
+            font-size: 42px;
+            line-height: 1;
+
+            font-weight: 700;
+            letter-spacing: -0.04em;
+
+            color: #111;
+        }
+
+        .stat-detail {
+            margin-top: 12px;
+
+            font-size: 13px;
+
+            color: #86868b;
+        }
+
+        /* =========================================================
+           DETECTION SECTION
+           ========================================================= */
+
+        .detections-section {
+            max-width: 1200px;
+            margin: 0 auto;
+
+            padding: 0 5% 100px;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 24px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            font-size: 34px;
+            letter-spacing: -0.04em;
+
+            color: #111;
+        }
+
+        .section-heading p {
+            margin: 0;
+
+            font-size: 14px;
+
+            color: #6e6e73;
+        }
+
+        /* =========================================================
+           FILTERS
+           ========================================================= */
+
+        .detection-filters {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+        .filter-button {
+            border: 1px solid #d2d2d7;
+            background: #fff;
+
+            border-radius: 999px;
+
+            padding: 10px 18px;
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 500;
+
+            color: #555;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .filter-button:hover {
+            border-color: #999;
+        }
+
+        .filter-button.active {
+            background: #111;
+            border-color: #111;
+
+            color: #fff;
+        }
+
+        /* =========================================================
+           TABLE
+           ========================================================= */
+
+        .detections-table-wrapper {
+            overflow-x: auto;
+
+            background: #fff;
+
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 24px;
+
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .detections-table {
+            width: 100%;
+            min-width: 850px;
+
+            border-collapse: collapse;
+        }
+
+        .detections-table th {
+            padding: 18px 22px;
+
+            text-align: left;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+
+            color: #86868b;
+
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .detections-table td {
+            padding: 22px;
+
+            font-size: 14px;
+
+            color: #333;
+
+            border-bottom: 1px solid #eeeeef;
+        }
+
+        .detections-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .detections-table tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        .detections-table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        /* =========================================================
+           SPECIES
+           ========================================================= */
+
+        .species {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            font-weight: 600;
+
+            color: #111;
+        }
+
+        .species-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #111;
+        }
+
+        .species-dot.secondary {
+            background: #777;
+        }
+
+        /* =========================================================
+           CONFIDENCE
+           ========================================================= */
+
+        .confidence {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .confidence-bar {
+            width: 90px;
+            height: 5px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: #e5e5e7;
+        }
+
+        .confidence-fill {
+            height: 100%;
+
+            border-radius: inherit;
+
+            background: #111;
+        }
+
+        .confidence-value {
+            font-weight: 600;
+
+            color: #222;
+        }
+
+        /* =========================================================
+           NODE
+           ========================================================= */
+
+        .node {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            background: #f2f2f2;
+
+            font-family: monospace;
+            font-size: 12px;
+
+            color: #444;
+        }
+
+        /* =========================================================
+           LOCATION
+           ========================================================= */
+
+        .location {
+            font-family: monospace;
+            font-size: 12px;
+
+            color: #555;
+        }
+
+        /* =========================================================
+           STATUS
+           ========================================================= */
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 7px;
+
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #111;
+        }
+
+        .status-dot.secondary {
+            background: #777;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .detections-footer {
+            padding: 50px 5%;
+
+            border-top: 1px solid #ddd;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            color: #86868b;
+        }
+
+        /* =========================================================
+           TABLET
+           ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .detections-header {
+                overflow: hidden;
+            }
+
+            .detections-nav {
+                gap: 18px;
+
+                overflow-x: auto;
+
+                max-width: 70vw;
+
+                padding-bottom: 3px;
+
+                scrollbar-width: none;
+            }
+
+            .detections-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .detections-nav a {
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            .detection-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .detections-hero {
+                padding-top: 80px;
+            }
+
+            .detections-hero h1 {
+                font-size: clamp(48px, 13vw, 72px);
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .section-heading p {
+                margin-top: 10px;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .detections-header {
+                min-height: 60px;
+
+                padding: 0 20px;
+
+                align-items: center;
+            }
+
+            .detections-brand {
+                font-size: 18px;
+            }
+
+            .detections-nav {
+                gap: 16px;
+
+                max-width: 58vw;
+
+                margin-left: 18px;
+            }
+
+            .detections-nav a {
+                font-size: 12px;
+            }
+
+            .detections-hero {
+                padding:
+                    70px 20px
+                    55px;
+            }
+
+            .detections-hero p {
+                font-size: 17px;
+            }
+
+            .detection-stats {
+                padding:
+                    0 20px
+                    45px;
+            }
+
+            .detections-section {
+                padding:
+                    0 20px
+                    70px;
+            }
+
+            .stat-card {
+                padding: 24px;
+            }
+
+            .stat-value {
+                font-size: 36px;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+
+            .detection-filters {
+                overflow-x: auto;
+
+                padding-bottom: 5px;
+
+                scrollbar-width: none;
+            }
+
+            .detection-filters::-webkit-scrollbar {
+                display: none;
+            }
+
+            .filter-button {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="detections-page">
+
+    <!-- =====================================================
+         WILDGUARD NAVIGATION
+         ===================================================== -->
+
+    <header class="detections-header">
+
+        <a
+            href="index.html"
+            class="detections-brand"
+        >
+            WILDGUARD
+        </a>
+
+        <nav class="detections-nav">
+
+            <a href="index.html">
+                Overview
+            </a>
+
+            <a href="monitor.html">
+                Live Monitor
+            </a>
+
+            <a
+                href="detections.html"
+                class="active"
+            >
+                Detections
+            </a>
+
+            <a href="map.html">
+                Map
+            </a>
+
+            <a href="devices.html">
+                Devices
+            </a>
+
+            <a href="analytics.html">
+                Analytics
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="detections-hero">
+
+            <div class="eyebrow">
+                AI Detection History
+            </div>
+
+            <h1>
+                Every detection.<br>
+                One clear record.
+            </h1>
+
+            <p>
+                Review wildlife detections captured by
+                WILDGUARD field nodes, including AI confidence,
+                monitoring location, and detection time.
+            </p>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="detection-stats">
+
+            <article class="stat-card">
+
+                <div class="stat-label">
+                    Total detections
+                </div>
+
+                <div class="stat-value">
+                    24
+                </div>
+
+                <div class="stat-detail">
+                    Prototype monitoring period
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-label">
+                    Elephant detections
+                </div>
+
+                <div class="stat-value">
+                    18
+                </div>
+
+                <div class="stat-detail">
+                    Primary alert species
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-label">
+                    Sloth bear detections
+                </div>
+
+                <div class="stat-value">
+                    6
+                </div>
+
+                <div class="stat-detail">
+                    Secondary wildlife category
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- DETECTION HISTORY -->
+
+        <section class="detections-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Detection history
+                    </h2>
+
+                    <p>
+                        Prototype records from connected field nodes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTER BUTTONS -->
+
+            <div class="detection-filters">
+
+                <button
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="elephant"
+                >
+                    Elephant
+                </button>
+
+                <button
+                    class="filter-button"
+                    data-filter="bear"
+                >
+                    Sloth Bear
+                </button>
+
+            </div>
+
+
+            <!-- DETECTION TABLE -->
+
+            <div class="detections-table-wrapper">
+
+                <table class="detections-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Species
+                            </th>
+
+                            <th>
+                                Confidence
+                            </th>
+
+                            <th>
+                                Field Node
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Time
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <!-- ELEPHANT -->
+
+                        <tr data-species="elephant">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot"></span>
+
+                                    Elephant
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 94%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        94%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-02
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.12345° N<br>
+                                    79.12345° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                10:42:18
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot"></span>
+
+                                    Alert
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- SLOTH BEAR -->
+
+                        <tr data-species="bear">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot secondary"></span>
+
+                                    Sloth Bear
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 87%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        87%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-01
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.12621° N<br>
+                                    79.12018° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                10:31:44
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot secondary"></span>
+
+                                    Detected
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ELEPHANT -->
+
+                        <tr data-species="elephant">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot"></span>
+
+                                    Elephant
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 91%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        91%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-02
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.12118° N<br>
+                                    79.12402° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                10:18:07
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot"></span>
+
+                                    Alert
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ELEPHANT -->
+
+                        <tr data-species="elephant">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot"></span>
+
+                                    Elephant
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 89%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        89%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-03
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.11982° N<br>
+                                    79.12811° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                09:54:32
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot"></span>
+
+                                    Alert
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- SLOTH BEAR -->
+
+                        <tr data-species="bear">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot secondary"></span>
+
+                                    Sloth Bear
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 82%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        82%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-01
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.12710° N<br>
+                                    79.11942° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                09:38:11
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot secondary"></span>
+
+                                    Detected
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- ELEPHANT -->
+
+                        <tr data-species="elephant">
+
+                            <td>
+
+                                <div class="species">
+
+                                    <span class="species-dot"></span>
+
+                                    Elephant
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <div class="confidence">
+
+                                    <div class="confidence-bar">
+
+                                        <div
+                                            class="confidence-fill"
+                                            style="width: 96%;"
+                                        ></div>
+
+                                    </div>
+
+                                    <span class="confidence-value">
+                                        96%
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                <span class="node">
+                                    WG-02
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="location">
+                                    10.12206° N<br>
+                                    79.12287° E
+                                </span>
+
+                            </td>
+
+                            <td>
+                                09:12:56
+                            </td>
+
+                            <td>
+
+                                <span class="status">
+
+                                    <span class="status-dot"></span>
+
+                                    Alert
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="detections-footer">
+
+        WILDGUARD · AI-powered wildlife early warning prototype
+
+    </footer>
+
+</div>
+
+
+<!-- =========================================================
+     FILTER JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+    const filterButtons =
+        document.querySelectorAll(".filter-button");
+
+    const detectionRows =
+        document.querySelectorAll(
+            ".detections-table tbody tr"
+        );
+
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const filter =
+                button.dataset.filter;
+
+
+            /* Update active button */
+
+            filterButtons.forEach(item => {
+
+                item.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+
+            /* Filter table rows */
+
+            detectionRows.forEach(row => {
+
+                const species =
+                    row.dataset.species;
+
+
+                if (
+                    filter === "all" ||
+                    species === filter
+                ) {
+
+                    row.style.display = "";
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```

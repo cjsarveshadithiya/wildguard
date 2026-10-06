@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Devices — WILDGUARD</title>
+
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: #ffffff;
+      --surface-soft: #fafafa;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: #d2d2d7;
+      --green: #1f7a4d;
+      --green-soft: #e8f4ed;
+      --blue: #246bce;
+      --orange: #b76b19;
+      --dark: #111111;
+      --radius: 24px;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(210, 210, 215, 0.75);
+    }
+
+    .nav {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      color: #424245;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    .nav-links a.active {
+      color: #000;
+      font-weight: 600;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 105px 0 80px;
+    }
+
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: var(--muted);
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.55;
+    }
+
+    /* =========================
+       OVERVIEW
+    ========================= */
+
+    .section {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 30px 0 100px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .section-header h2 {
+      font-size: 38px;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .section-header p {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       SUMMARY CARDS
+    ========================= */
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .summary-card {
+      min-height: 180px;
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .summary-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
+    }
+
+    .summary-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .summary-value {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .summary-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* =========================
+       DEVICE CARDS
+    ========================= */
+
+    .devices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .device-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .device-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.09);
+    }
+
+    .device-top {
+      padding: 28px 28px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .device-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .device-id {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .device-location {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2d9b62;
+      box-shadow: 0 0 0 4px rgba(45, 155, 98, 0.12);
+    }
+
+    .device-visual {
+      height: 230px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.025) 1px,
+          transparent 1px
+        ),
+        #f7f7f7;
+      background-size: 24px 24px;
+    }
+
+    .node {
+      width: 130px;
+      height: 150px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .node-body {
+      width: 86px;
+      height: 112px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #252525, #111111);
+      box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.22),
+        inset 0 1px rgba(255, 255, 255, 0.12);
+      position: relative;
+    }
+
+    .node-camera {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #090909;
+      border: 4px solid #414141;
+      box-shadow: inset 0 0 0 7px #181818;
+    }
+
+    .node-camera::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #75b7ff;
+      top: 10px;
+      left: 10px;
+      opacity: 0.9;
+    }
+
+    .node-light {
+      position: absolute;
+      right: 11px;
+      top: 13px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #49b979;
+      box-shadow: 0 0 12px rgba(73, 185, 121, 0.9);
+    }
+
+    .node-label {
+      position: absolute;
+      bottom: 9px;
+      color: #aaa;
+      font-size: 8px;
+      letter-spacing: 0.15em;
+    }
+
+    .device-body {
+      padding: 25px 28px 28px;
+    }
+
+    .device-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    .device-specs {
+      display: grid;
+      gap: 12px;
+    }
+
+    .spec {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      font-size: 13px;
+    }
+
+    .spec-label {
+      color: var(--muted);
+    }
+
+    .spec-value {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .signal span {
+      width: 4px;
+      border-radius: 2px;
+      background: #c8c8c8;
+    }
+
+    .signal span:nth-child(1) {
+      height: 5px;
+    }
+
+    .signal span:nth-child(2) {
+      height: 8px;
+    }
+
+    .signal span:nth-child(3) {
+      height: 11px;
+      background: var(--green);
+    }
+
+    .signal span:nth-child(4) {
+      height: 14px;
+      background: var(--green);
+    }
+
+    /* =========================
+       ARCHITECTURE
+    ========================= */
+
+    .architecture {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+
+    .architecture-card {
+      background: var(--dark);
+      color: #fff;
+      border-radius: 30px;
+      padding: 42px;
+      min-height: 410px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .architecture-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px
+        );
+      background-size: 34px 34px;
+      pointer-events: none;
+    }
+
+    .architecture-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .architecture-card h3 {
+      font-size: 34px;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+
+    .architecture-card > .architecture-content > p {
+      color: #a1a1a6;
+      max-width: 540px;
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .pipeline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pipeline-item {
+      padding: 12px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.055);
+      color: #e8e8e8;
+      font-size: 12px;
+    }
+
+    .pipeline-arrow {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .components-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 42px;
+    }
+
+    .components-card h3 {
+      font-size: 30px;
+      letter-spacing: -0.04em;
+      margin-bottom: 25px;
+    }
+
+    .component-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .component {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .component:last-child {
+      border-bottom: 0;
+    }
+
+    .component-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .component-role {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    /* =========================
+       FIELD STATUS
+    ========================= */
+
+    .field-section {
+      margin-top: 20px;
+      padding: 42px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .field-section h3 {
+      font-size: 30px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .field-section > p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .field-item {
+      padding: 22px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .field-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .field-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .field-status {
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .field-meta {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .field-meta-row strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* =========================
+       PROTOTYPE NOTE
+    ========================= */
+
+    .prototype-note {
+      margin-top: 24px;
+      padding: 22px 25px;
+      border-radius: 20px;
+      background: #f0f0f2;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .prototype-note strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      background: #f5f5f7;
+    }
+
+    .footer-inner {
+      width: min(1200px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 45px 0 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .footer-copy {
+      max-width: 480px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 1000px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .devices-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .device-card {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .device-top {
+        grid-column: 1 / -1;
+      }
+
+      .device-visual {
+        height: 100%;
+        min-height: 260px;
+      }
+
+      .device-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .architecture {
+        grid-template-columns: 1fr;
+      }
+
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-header {
+        height: 58px;
+      }
+
+      .nav {
+        width: calc(100% - 28px);
+        gap: 15px;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .hero {
+        width: calc(100% - 28px);
+        padding: 75px 0 55px;
+      }
+
+      .hero h1 {
+        font-size: clamp(44px, 15vw, 65px);
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section {
+        width: calc(100% - 28px);
+        padding-bottom: 70px;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-header h2 {
+        margin-bottom: 15px;
+        font-size: 32px;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .summary-card {
+        min-height: 155px;
+        padding: 20px;
+      }
+
+      .summary-value {
+        font-size: 34px;
+      }
+
+      .device-card {
+        display: block;
+      }
+
+      .device-visual {
+        height: 220px;
+      }
+
+      .architecture-card,
+      .components-card,
+      .field-section {
+        padding: 28px;
+        border-radius: 24px;
+      }
+
+      .architecture-card h3,
+      .components-card h3,
+      .field-section h3 {
+        font-size: 27px;
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .pipeline-arrow {
+        display: none;
+      }
+
+      .footer-inner {
+        width: calc(100% - 28px);
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-card {
+        min-height: auto;
+      }
+
+      .device-top,
+      .device-body {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .device-id {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
+
+  <header class="site-header">
+    <nav class="nav">
+
+      <a href="index.html" class="brand">WILDGUARD</a>
+
+      <div class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="monitor.html">Live Monitor</a>
+        <a href="detections.html">Detections</a>
+        <a href="map.html">Map</a>
+        <a href="devices.html" class="active">Devices</a>
+        <a href="analytics.html">Analytics</a>
+        <a href="about.html">About</a>
+      </div>
+
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="eyebrow">
+        Field Infrastructure
+      </div>
+
+      <h1>
+        The network<br />
+        <span>behind the watch.</span>
+      </h1>
+
+      <p>
+        WILDGUARD monitoring nodes combine camera vision,
+        edge AI, GPS and long-range LoRa communication to
+        create an early-warning layer along the forest–farm boundary.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         SUMMARY
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Device overview.</h2>
+        </div>
+
+        <p>
+          A prototype view of the distributed field hardware.
+          Each node is designed to detect wildlife locally and
+          communicate alerts over long range.
+        </p>
+
+      </div>
+
+
+      <div class="summary-grid">
+
+        <div class="summary-card">
+          <div class="summary-label">Monitoring nodes</div>
+          <div class="summary-value">03</div>
+          <div class="summary-note">Prototype field network</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Online nodes</div>
+          <div class="summary-value">03</div>
+          <div class="summary-note">Connection status: normal</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Primary species</div>
+          <div class="summary-value">01</div>
+          <div class="summary-note">Elephant detection</div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-label">Communication</div>
+          <div class="summary-value">LoRa</div>
+          <div class="summary-note">Long-range field link</div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         DEVICES
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Monitoring nodes.</h2>
+        </div>
+
+        <p>
+          Each field node provides the sensing and communication
+          layer required for autonomous wildlife monitoring.
+        </p>
+
+      </div>
+
+
+      <div class="devices-grid">
+
+
+        <!-- WG-01 -->
+
+        <article class="device-card">
+
+          <div class="device-top">
+
+            <div class="device-heading">
+
+              <div>
+                <div class="device-id">WG-01</div>
+                <div class="device-location">
+                  Northern boundary sector
+                </div>
+              </div>
+
+              <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-visual">
+
+            <div class="node">
+
+              <div class="node-body">
+
+                <div class="node-camera"></div>
+
+                <div class="node-light"></div>
+
+                <div class="node-label">
+                  WILDGUARD
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-body">
+
+            <p class="device-description">
+              Primary field node configured for continuous
+              elephant monitoring and local AI inference.
+            </p>
+
+            <div class="device-specs">
+
+              <div class="spec">
+                <span class="spec-label">Camera</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Edge processor</span>
+                <span class="spec-value">Raspberry Pi 4</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">GPS</span>
+                <span class="spec-value">Locked</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">LoRa</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Signal</span>
+                <span class="signal">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- WG-02 -->
+
+        <article class="device-card">
+
+          <div class="device-top">
+
+            <div class="device-heading">
+
+              <div>
+                <div class="device-id">WG-02</div>
+                <div class="device-location">
+                  Eastern boundary sector
+                </div>
+              </div>
+
+              <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-visual">
+
+            <div class="node">
+
+              <div class="node-body">
+
+                <div class="node-camera"></div>
+
+                <div class="node-light"></div>
+
+                <div class="node-label">
+                  WILDGUARD
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-body">
+
+            <p class="device-description">
+              Active monitoring node currently associated with
+              the primary detection preview in the live monitor.
+            </p>
+
+            <div class="device-specs">
+
+              <div class="spec">
+                <span class="spec-label">Camera</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Edge processor</span>
+                <span class="spec-value">Raspberry Pi 4</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">GPS</span>
+                <span class="spec-value">Locked</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">LoRa</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Signal</span>
+                <span class="signal">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- WG-03 -->
+
+        <article class="device-card">
+
+          <div class="device-top">
+
+            <div class="device-heading">
+
+              <div>
+                <div class="device-id">WG-03</div>
+                <div class="device-location">
+                  Southern boundary sector
+                </div>
+              </div>
+
+              <div class="status">
+                <span class="status-dot"></span>
+                ONLINE
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-visual">
+
+            <div class="node">
+
+              <div class="node-body">
+
+                <div class="node-camera"></div>
+
+                <div class="node-light"></div>
+
+                <div class="node-label">
+                  WILDGUARD
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="device-body">
+
+            <p class="device-description">
+              Secondary monitoring node providing additional
+              coverage and communication redundancy.
+            </p>
+
+            <div class="device-specs">
+
+              <div class="spec">
+                <span class="spec-label">Camera</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Edge processor</span>
+                <span class="spec-value">Raspberry Pi 4</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">GPS</span>
+                <span class="spec-value">Locked</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">LoRa</span>
+                <span class="spec-value">Connected</span>
+              </div>
+
+              <div class="spec">
+                <span class="spec-label">Signal</span>
+                <span class="signal">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ARCHITECTURE
+    ========================= -->
+
+    <section class="section">
+
+      <div class="section-header">
+
+        <div>
+          <h2>Inside every node.</h2>
+        </div>
+
+        <p>
+          The hardware stack is intentionally modular so the
+          prototype can evolve toward field deployment.
+        </p>
+
+      </div>
+
+
+      <div class="architecture">
+
+
+        <div class="architecture-card">
+
+          <div class="architecture-content">
+
+            <h3>
+              Detect.<br />
+              Decide.<br />
+              Communicate.
+            </h3>
+
+            <p>
+              Processing happens at the edge. The camera captures
+              the scene, the AI model identifies wildlife, GPS
+              associates the detection with the monitoring node,
+              and LoRa transmits the event to the alert layer.
+            </p>
+
+
+            <div class="pipeline">
+
+              <div class="pipeline-item">
+                Camera
+              </div>
+
+              <div class="pipeline-arrow">
+                →
+              </div>
+
+              <div class="pipeline-item">
+                Raspberry Pi
+              </div>
+
+              <div class="pipeline-arrow">
+                →
+              </div>
+
+              <div class="pipeline-item">
+                YOLO
+              </div>
+
+              <div class="pipeline-arrow">
+                →
+              </div>
+
+              <div class="pipeline-item">
+                GPS
+              </div>
+
+              <div class="pipeline-arrow">
+                →
+              </div>
+
+              <div class="pipeline-item">
+                LoRa
+              </div>
+
+              <div class="pipeline-arrow">
+                →
+              </div>
+
+              <div class="pipeline-item">
+                Alert
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="components-card">
+
+          <h3>Core components.</h3>
+
+          <div class="component-list">
+
+            <div class="component">
+
+              <div class="component-name">
+                Camera
+              </div>
+
+              <div class="component-role">
+                Visual input
+              </div>
+
+            </div>
+
+            <div class="component">
+
+              <div class="component-name">
+                Raspberry Pi 4
+              </div>
+
+              <div class="component-role">
+                Edge processing
+              </div>
+
+            </div>
+
+            <div class="component">
+
+              <div class="component-name">
+                YOLO + OpenCV
+              </div>
+
+              <div class="component-role">
+                Wildlife detection
+              </div>
+
+            </div>
+
+            <div class="component">
+
+              <div class="component-name">
+                GPS module
+              </div>
+
+              <div class="component-role">
+                Node location
+              </div>
+
+            </div>
+
+            <div class="component">
+
+              <div class="component-name">
+                RA-02 SX1278
+              </div>
+
+              <div class="component-role">
+                LoRa communication
+              </div>
+
+            </div>
+
+            <div class="component">
+
+              <div class="component-name">
+                Solar power
+              </div>
+
+              <div class="component-role">
+                Future deployment
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         FIELD STATUS
+    ========================= -->
+
+    <section class="section">
+
+      <div class="field-section">
+
+        <h3>
+          Field status.
+        </h3>
+
+        <p>
+          Prototype monitoring-node status and representative
+          telemetry values.
+        </p>
+
+
+        <div class="field-grid">
+
+
+          <div class="field-item">
+
+            <div class="field-item-top">
+
+              <div class="field-name">
+                WG-01
+              </div>
+
+              <div class="field-status">
+                ONLINE
+              </div>
+
+            </div>
+
+            <div class="field-meta">
+
+              <div class="field-meta-row">
+                <span>Battery</span>
+                <strong>94%</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>LoRa signal</span>
+                <strong>Strong</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>Last heartbeat</span>
+                <strong>12 sec ago</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="field-item">
+
+            <div class="field-item-top">
+
+              <div class="field-name">
+                WG-02
+              </div>
+
+              <div class="field-status">
+                ONLINE
+              </div>
+
+            </div>
+
+            <div class="field-meta">
+
+              <div class="field-meta-row">
+                <span>Battery</span>
+                <strong>89%</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>LoRa signal</span>
+                <strong>Strong</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>Last heartbeat</span>
+                <strong>8 sec ago</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="field-item">
+
+            <div class="field-item-top">
+
+              <div class="field-name">
+                WG-03
+              </div>
+
+              <div class="field-status">
+                ONLINE
+              </div>
+
+            </div>
+
+            <div class="field-meta">
+
+              <div class="field-meta-row">
+                <span>Battery</span>
+                <strong>91%</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>LoRa signal</span>
+                <strong>Good</strong>
+              </div>
+
+              <div class="field-meta-row">
+                <span>Last heartbeat</span>
+                <strong>15 sec ago</strong>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="prototype-note">
+          <strong>Prototype data:</strong>
+          Device states, battery levels, heartbeat times and
+          connectivity values shown here are representative UI
+          values. They are not yet connected to physical hardware.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        WILDGUARD
+      </div>
+
+      <div class="footer-copy">
+        AI-powered early warning for human–elephant conflict
+        mitigation. Prototype interface for research and
+        development. Wildlife detection, GPS and LoRa
+        integration are designed for future hardware deployment.
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
